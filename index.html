@@ -132,31 +132,90 @@
   }
 
   function openBuyModal(imageUrl, planId){
-    const tpl = document.getElementById('modal-template');
-    const node = tpl.content.cloneNode(true);
-    const modal = node.querySelector('.modal');
-    const body = node.getElementById('modal-body');
+  const tpl = document.getElementById('modal-template');
+  const node = tpl.content.cloneNode(true);
+  const modal = node.querySelector('.modal');
+  const body = node.getElementById('modal-body');
 
-    body.innerHTML = `<h3>Confirm Purchase</h3>
-      <p>Plan: <strong>${escapeHtml(planId)}</strong></p>
-      <div style="text-align:center;margin-top:8px">
-        <img src="${escapeHtml(imageUrl)}" alt="promo" style="max-width:100%;border-radius:8px" onerror="this.style.display='none'">
-      </div>
-      <p style="margin-top:12px">(This is a static demo — connect to payment gateway to accept real payments.)</p>
-      <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:12px">
+  body.innerHTML = `
+    <h3>Confirm Purchase</h3>
+    <p>Plan: <strong>${escapeHtml(planId)}</strong></p>
+    <div style="text-align:center;margin-top:8px">
+      <img src="${escapeHtml(imageUrl)}" alt="promo"
+           style="max-width:100%;border-radius:8px"
+           onerror="this.style.display='none'">
+    </div>
+
+    <!-- ✅ TIMER + UTR UI -->
+    <div style="margin-top:12px">
+      <div>Time Remaining</div>
+      <div class="timer" id="timer">00:15</div>
+
+      <input
+        type="text"
+        id="utr"
+        class="utr-input"
+        placeholder="Enter 12 digit UTR"
+        maxlength="12"
+        style="margin-top:8px;width:100%;padding:8px"
+      />
+
+      <div class="btns" style="display:flex;gap:8px;justify-content:flex-end;margin-top:12px">
         <button class="btn btn-ghost" id="cancel">Close</button>
-        <button class="btn btn-primary" id="confirm">Proceed to Pay</button>
+        <button class="btn btn-primary" id="confirm" disabled>Proceed to Pay</button>
       </div>
-    `;
+    </div>
+  `;
 
-    document.body.appendChild(modal);
+  document.body.appendChild(modal);
 
-    modal.querySelector('#modal-close').addEventListener('click', ()=>modal.remove());
-    modal.querySelector('#cancel').addEventListener('click', ()=>modal.remove());
-    modal.querySelector('#confirm').addEventListener('click', ()=>{
-      alert('Simulated payment flow. Replace with real payment integration.');
-      modal.remove();
-    });
+  // ❗ yahan se timer + UTR JS
+  const timerEl = modal.querySelector("#timer");
+  const utrEl   = modal.querySelector("#utr");
+  const payBtn  = modal.querySelector("#confirm");
+
+  let time = 15;
+  let timerDone = false;
+
+  const timerInterval = setInterval(() => {
+    time--;
+    timerEl.textContent = "00:" + (time < 10 ? "0" + time : time);
+
+    if (time <= 0) {
+      clearInterval(timerInterval);
+      timerEl.textContent = "00:00";
+      timerDone = true;
+      checkEnable();
+    }
+  }, 1000);
+
+  utrEl.addEventListener("input", () => {
+    utrEl.value = utrEl.value.replace(/\D/g, "");
+    checkEnable();
+  });
+
+  function checkEnable() {
+    if (utrEl.value.length === 12 && timerDone) {
+      payBtn.disabled = false;
+    } else {
+      payBtn.disabled = true;
+    }
+  }
+
+  // pehle se jo close handlers the:
+  modal.querySelector('#modal-close').addEventListener('click', ()=>{
+    clearInterval(timerInterval);
+    modal.remove();
+  });
+  modal.querySelector('#cancel').addEventListener('click', ()=>{
+    clearInterval(timerInterval);
+    modal.remove();
+  });
+  modal.querySelector('#confirm').addEventListener('click', ()=>{
+    alert('Simulated payment flow. Replace with real payment integration.');
+    clearInterval(timerInterval);
+    modal.remove();
+  });
   }
 
   // Admin panel
