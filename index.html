@@ -83,7 +83,62 @@
       }
     ]
   };
+  <!-- ✅ TIMER -->
+  <div>Time Remaining</div>
+  <div class="timer" id="timer">00:15</div>
 
+  <!-- ✅ UTR INPUT (Only 12 digits) -->
+  <input 
+    type="text" 
+    id="utr" 
+    class="utr-input" 
+    placeholder="Enter 12 digit UTR"
+    maxlength="12"
+  >
+
+  <!-- ✅ BUTTONS -->
+  <div class="btns">
+    <button class="btn close-btn">Close</button>
+    <button class="btn pay-btn" id="payBtn" disabled>Proceed to Pay</button>
+  </div>
+
+</div>
+
+<script>
+  let time = 15;
+  let timerDone = false;
+
+  const timerEl = document.getElementById("timer");
+  const utrEl = document.getElementById("utr");
+  const payBtn = document.getElementById("payBtn");
+
+  // ✅ TIMER LOGIC
+  const timerInterval = setInterval(() => {
+    time--;
+    timerEl.textContent = "00:" + (time < 10 ? "0" + time : time);
+
+    if (time <= 0) {
+      clearInterval(timerInterval);
+      timerEl.textContent = "00:00";
+      timerDone = true;
+      checkEnable();
+    }
+  }, 1000);
+
+  // ✅ Allow ONLY 12 digit number
+  utrEl.addEventListener("input", () => {
+    utrEl.value = utrEl.value.replace(/\D/g, ""); 
+    checkEnable();
+  });
+
+  // ✅ Enable button only when BOTH done
+  function checkEnable() {
+    if (utrEl.value.length === 12 && timerDone) {
+      payBtn.disabled = false;
+    } else {
+      payBtn.disabled = true;
+    }
+      }
   const ADMIN_PASSWORD = 'shadowxyz'; // as requested (INSECURE)
   const STORAGE_KEY = 'plans_config';
 
