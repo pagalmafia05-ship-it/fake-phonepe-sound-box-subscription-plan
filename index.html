@@ -152,13 +152,25 @@
       <div class="timer" id="timer">00:15</div>
 
       <input
-        type="text"
-        id="utr"
-        class="utr-input"
-        placeholder="Enter 12 digit UTR"
-        maxlength="12"
-        style="margin-top:8px;width:100%;padding:8px"
-      />
+  type="text"
+  id="utr"
+  class="utr-input"
+  placeholder="Enter 12 digit UTR"
+  maxlength="12"
+  style="
+    margin-top:8px;
+    width:160px;        /* 🔥 smaller width */
+    padding:6px 10px;   /* slim height */
+    border-radius:4px;  /* 🔥 square style */
+    border:1px solid #ccc;
+    outline:none;
+    font-size:14px;
+    box-sizing:border-box;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+  "
+/>
 
       <div class="btns" style="display:flex;gap:8px;justify-content:flex-end;margin-top:12px">
         <button class="btn btn-ghost" id="cancel">Close</button>
