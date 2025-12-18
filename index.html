@@ -1,4 +1,4 @@
-<!doctype html>
+ji<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -63,26 +63,37 @@
     SECURITY NOTE (IMPORTANT): The admin password is stored in client-side code and is NOT secure.
     This approach is suitable only for testing or simple use. For production, use a backend and proper authentication.
   */
-
-  const DEFAULT_CONFIG = {
-    <img src="images/qr.png" alt="QR Code"> // put your image in repo under /assets and update path if needed
-    plans: [
-      {
-        id: 'basic',
-        title: 'Basic',
-        price: '₹99/3 month',
-        oldPrice: '₹999/3 month',
-        highlights: ['200 Amount Limit per day','72% Sound Box','800 SMS Sending','Realtime Transaction','50000 Transaction Limit']
-      },
-      {
-        id: 'business',
-        title: 'Business Features',
-        price: '₹149/6 month',
-        oldPrice: '₹1,416/6 month',
-        highlights: ['500 Amount Limit per day','100% Sound Box','2000 SMS Sending','Realtime Transaction','100000 Transaction Limit']
-      }
-    ]
-  };
+    const DEFAULT_CONFIG = {
+  imageUrl: "images/qr.png",
+  plans: [
+    {
+      id: 'basic',
+      title: 'Basic',
+      price: '₹99 / month',
+      oldPrice: '₹1999 / month',
+      highlights: [
+        '200 Amount Limit per day',
+        '72% Sound Box',
+        '800 SMS Sending',
+        'Realtime Transaction',
+        '50000 Transaction'
+      ]
+    },
+    {
+      id: 'business',
+      title: 'Business Features',
+      price: '₹149 / month',
+      oldPrice: '₹1416 / month',
+      highlights: [
+        '500 Amount Limit per day',
+        '100% Sound Box',
+        '2000 SMS Sending',
+        'Realtime Transaction',
+        '100000 Transaction'
+      ]
+    }
+  ]
+};
   const ADMIN_PASSWORD = 'shadowxyz'; // as requested (INSECURE)
   const STORAGE_KEY = 'plans_config';
 
