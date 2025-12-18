@@ -65,29 +65,24 @@
   */
 
   const DEFAULT_CONFIG = {
-    imageUrl: 'qr.png', // put your image in repo under /assets and update path if needed
-    const DEFAULT_CONFIG = {
-  telegram: {
-    price: 29,
-    features: [
-      "Indian Number – Fully Verified",
-      "Premium Quality Account",
-      "Never Gets Banned",
-      "Message Anyone You Want",
-      "Your Number Will NOT Show",
-      "Works On All Devices"
+    <img src="images/qr.png" alt="QR Code"> // put your image in repo under /assets and update path if needed
+    plans: [
+      {
+        id: 'basic',
+        title: 'Basic',
+        price: '₹99/3 month',
+        oldPrice: '₹999/3 month',
+        highlights: ['200 Amount Limit per day','72% Sound Box','800 SMS Sending','Realtime Transaction','50000 Transaction Limit']
+      },
+      {
+        id: 'business',
+        title: 'Business Features',
+        price: '₹149/6 month',
+        oldPrice: '₹1,416/6 month',
+        highlights: ['500 Amount Limit per day','100% Sound Box','2000 SMS Sending','Realtime Transaction','100000 Transaction Limit']
+      }
     ]
-  },
-  whatsapp: {
-    price: 29,
-    features: [
-      "Permanent – Never gets banned",
-      "Lifetime validity",
-      "Private number",
-      "Works on all devices"
-    ]
-  }
-};
+  };
   const ADMIN_PASSWORD = 'shadowxyz'; // as requested (INSECURE)
   const STORAGE_KEY = 'plans_config';
 
