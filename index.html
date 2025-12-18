@@ -6,46 +6,87 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#f6f9ff;
-      --card:#ffffff;
-      --primary:#5b8cff;
-      --primary-dark:#3f6fe0;
-      --text:#0f172a;
-      --muted:#64748b;
-      --success:#16a34a;
-      --border:#e5e7eb;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:'Inter',
-    .plans{display:grid;grid-template-columns:1fr;gap:18px;margin-top:18px}
-    .card{background:white;border-radius:12px;padding:18px;box-shadow:0 6px 18px rgba(18,38,63,0.08)}
-    .price{font-size:20px;font-weight:700}
-    .buy{display:inline-block;margin-top:12px;padding:10px 16px;border-radius:8px;background:#3b82f6;color:white;text-decoration:none;cursor:pointer}
-    .list{margin-top:10px}
-    .list li{margin:6px 0}
-    /* modal */
-    .modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(2,6,23,0.5);z-index:999;}
-    .modal-inner{background:white;padding:18px;border-radius:8px;max-width:520px;width:94%}
-    .close{float:right;cursor:pointer}
-    /* admin */
-    .admin-panel{display:flex;gap:12px;flex-direction:column}
-    textarea{width:100%;height:220px;font-family:monospace}
-    .btn{padding:8px 12px;border-radius:8px;border:0;cursor:pointer}
-    .btn-primary{background:#10b981;color:white}
-    .btn-ghost{background:#e6eef8}
-    footer{margin-top:28px;text-align:center;color:#6b7280}
-    @media(min-width:720px){.plans{grid-template-columns:1fr 1fr}}
-  </style>
+
 </head>
 <body>
   <div class="container">
-    <h1>PhonePe Sound Box</h1>
-<p class="subtitle">Smart Payment Voice System</p>
+    <h1 class="title">
+  PhonePe Sound Box 
+  <span class="badge">100% Working</span>
+</h1>
+<p class="subtitle">
+  🔔 Smart Payment Voice System • Real-Time Alerts
+</p>
+<style/* Premium Heading */
+.title{
+  text-align:center;
+  font-size:28px;
+  font-weight:700;
+  letter-spacing:0.4px;
+}
 
+/* Trust Badge */
+.badge{
+  display:inline-block;
+  margin-left:8px;
+  padding:4px 10px;
+  font-size:12px;
+  font-weight:600;
+  color:#065f46;
+  background:#d1fae5;
+  border-radius:999px;
+  vertical-align:middle;
+}
+
+/* Subtitle Premium */
+.subtitle{
+  margin-top:8px;
+  font-size:15px;
+  color:#475569;
+  text-align:center;
+}
+
+/* Card Premium Upgrade */
+.card{
+  background:#ffffff;
+  border-radius:16px;
+  padding:20px;
+  box-shadow:0 15px 40px rgba(2,6,23,0.08);
+  border:1px solid #eef2f7;
+}
+
+/* Price Highlight */
+.price{
+  font-size:24px;
+  font-weight:700;
+  color:#0f172a;
+}
+
+/* Buy Button Premium */
+.buy{
+  background:linear-gradient(135deg,#2563eb,#1d4ed8);
+  color:#fff;
+  border:none;
+  padding:12px 18px;
+  border-radius:12px;
+  font-size:15px;
+  font-weight:600;
+  transition:all .25s ease;
+}
+
+.buy:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 25px rgba(37,99,235,.35);
+}
+
+/* Trust Footer Text */
+footer{
+  margin-top:32px;
+  text-align:center;
+  color:#64748b;
+  font-size:13px;
+}
+   </style> 
     <div id="app">
       <div id="plans" class="plans"></div>
     </div>
